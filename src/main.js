@@ -1,0 +1,10 @@
+import './js/accordion-faq.js';
+import './js/api.js';
+import './js/burger-menu.js';
+import './js/contact-form.js';
+import './js/loader.js';
+import './js/modal.js';
+import './js/portfolio-filter.js';
+import './js/scroll-up.js';
+import './js/smooth-scroll.js';
+import './js/swiper-feedbacks.js';
