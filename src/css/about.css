@@ -1,0 +1,19 @@
+.about {
+  padding: 64px 0;
+}
+.about .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-decoration {
+  display: block;
+  margin-bottom: 20px;
+}
+.about-title {
+}
+.about-text {
+}
+.about-image {
+}
