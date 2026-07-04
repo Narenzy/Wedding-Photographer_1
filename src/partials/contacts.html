@@ -1,0 +1,71 @@
+<section class="contacts" id="contacts">
+  <div class="container contacts__container">
+    
+    <div class="contacts__content-wrapper">
+      
+      <div class="contacts__info-block">
+        <div class="contacts__decor" aria-hidden="true">
+          <svg class="contacts__decor-icon" width="144" height="20">
+            <use href="./icons/symbol.svg#icon-header-decor"></use>
+          </svg>
+        </div>
+
+        <h2 class="contacts__title">Let's Tell Your Story</h2>
+        <p class="contacts__description">
+          I can't wait to hear more about your wedding! Tell me about your plans, and I'll be in touch to discuss how we can create magic together.
+        </p>
+
+        <address class="contacts__address">
+          <ul class="contacts__list">
+            <li class="contacts__item">
+              <a href="mailto:info@mariakovalenko.com" class="contacts__link">
+                <svg class="contacts__icon" width="20" height="20">
+                  <use href="./icons/symbol.svg#icon-envelope"></use>
+                </svg>
+                <span class="contacts__text">info@mariakovalenko.com</span>
+              </a>
+            </li>
+            <li class="contacts__item">
+              <a href="tel:+405551234567" class="contacts__link">
+                <svg class="contacts__icon" width="20" height="20">
+                  <use href="./icons/symbol.svg#icon-phone"></use>
+                </svg>
+                <span class="contacts__text">+40 (555) 123-45-67</span>
+              </a>
+            </li>
+            <li class="contacts__item">
+              <div class="contacts__link contacts__link--static">
+                <svg class="contacts__icon" width="20" height="20">
+                  <use href="./icons/symbol.svg#icon-location"></use>
+                </svg>
+                <span class="contacts__text">Raschdorffstraße 2-26, 13409 Berlin, Germany</span>
+              </div>
+            </li>
+          </ul>
+        </address>
+      </div>
+
+      <form class="contacts__form" id="contactsForm" novalidate>
+        <div class="contacts__form-field">
+          <label for="userName" class="contacts__form-label">Name*</label>
+          <input type="text" id="userName" name="name" class="contacts__form-input" placeholder="Maria" required />
+        </div>
+
+        <div class="contacts__form-field">
+          <label for="userPhone" class="contacts__form-label">Phone*</label>
+          <input type="tel" id="userPhone" name="phone" class="contacts__form-input" placeholder="+1 (202) 111 2323" required />
+        </div>
+
+        <div class="contacts__form-field">
+          <label for="userMessage" class="contacts__form-label">Message</label>
+          <textarea id="userMessage" name="message" class="contacts__form-textarea" placeholder="Tell me a little about you and your special day. Don't forget to include your wedding date, venue, and what you're most excited about..."></textarea>
+        </div>
+
+        <button type="submit" class="contacts__form-btn">
+          <span class="contacts__btn-text">Let's Talk</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
