@@ -3,13 +3,8 @@
    =========================== */
 
 .Hero {
-  padding: 32px 20px;
+  padding: 32px 0;
   background-color: #f7f4ef;
-}
-
-.Container {
-  max-width: 1440px;
-  margin: 0 auto;
 }
 
 .Hero__container {
@@ -18,26 +13,27 @@
 
 .Hero__visual {
   position: relative;
+  display: flex;
   width: 100%;
   min-height: 560px;
   margin: 0;
   overflow: hidden;
   border-radius: 28px;
-  background-color: #000;
-  background-image: url('/img/hero.jpg');
+  background-color: var(--color-neutral-darkest);
+  background-image: url('/img/hero-mobile.webp');
   background-repeat: no-repeat;
-  background-position: 61% center;
+  background-position: 56% center;
   background-size: cover;
 }
 
 .Hero__overlay {
-  position: absolute;
-  inset: 0;
   display: flex;
+  width: 100%;
+  min-height: inherit;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 32px 20px;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 32px 16px 20px;
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.18) 0%,
@@ -46,225 +42,85 @@
 }
 
 .Hero__content {
+  align-self: stretch;
   width: 100%;
-  max-width: 295px;
-  color: #fff;
+  max-width: none;
+  color: var(--color-white);
   text-align: left;
 }
 
 .Hero__title {
-  margin: 0 0 12px;
-  font-family: 'Cormorant', serif;
+  max-width: 100%;
+  margin-bottom: 12px;
+  font-family: var(--second-family);
   font-weight: 500;
-  font-size: 40px;
-  line-height: 1.2;
+  font-size: 36px;
+  line-height: 1.08;
   letter-spacing: -0.01em;
 }
 
 .Hero__subtitle {
-  margin: 0;
+  max-width: 100%;
   color: rgba(255, 255, 255, 0.95);
-  font-family: 'Mulish', sans-serif;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
 }
 
 .Hero__actions {
+  align-self: stretch;
   width: 100%;
-  margin-top: 32px;
+  margin-top: auto;
   display: flex;
   justify-content: flex-start;
 }
 
-.Button {
+.Hero .Button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
   border-radius: 12px;
   border: 2px solid transparent;
-  cursor: pointer;
   font-weight: 500;
   transition:
-    background-color 140ms ease,
-    border-color 140ms ease,
-    color 140ms ease,
-    box-shadow 140ms ease;
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition);
 }
 
-.Button_primary {
+.Hero .Button_primary {
   width: 100%;
-  max-width: 295px;
+  max-width: none;
   min-height: 44px;
   padding: 0 24px;
-  background-color: #fff;
-  color: #111;
+  background-color: var(--color-white);
+  color: var(--color-neutral-darkest);
 }
 
-.Button_primary:hover,
-.Button_primary:focus {
-  background-color: #fff;
-  border-color: #dcc110;
-  color: #111;
+.Hero .Button_primary:hover,
+.Hero .Button_primary:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-curious-blue);
+  color: var(--color-neutral-darkest);
   outline: none;
 }
 
-.Button_primary:active {
+.Hero .Button_primary:active {
   background-color: #f3df59;
-  border-color: #dcc110;
-  box-shadow: inset 0 0 0 1px #dcc110;
+  border-color: var(--color-curious-blue);
+  box-shadow: inset 0 0 0 1px var(--color-curious-blue);
 }
 
-.Button_primary:disabled,
-.Button_primary[aria-disabled='true'] {
+.Hero .Button_primary:disabled,
+.Hero .Button_primary[aria-disabled='true'] {
   background-color: #f6e99b;
   border-color: transparent;
-  color: #a3a3a3;
-  cursor: not-allowed;
+  color: var(--color-neutral-light);
   pointer-events: none;
 }
 
-.VisuallyHidden {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* ===========================
-   HERO SECTION — mobile first
-   =========================== */
-
-.Hero {
-  padding: 32px 20px;
-  background-color: #f7f4ef;
-}
-
-.Container {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-.Hero__container {
-  display: block;
-}
-
-.Hero__visual {
-  position: relative;
-  width: 100%;
-  min-height: 560px;
-  margin: 0;
-  overflow: hidden;
-  border-radius: 28px;
-  background-color: #000;
-  background-image: url(../public/img/hero.jpg);
-  background-repeat: no-repeat;
-  background-position: 61% center;
-  background-size: cover;
-}
-
-.Hero__overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 32px 20px;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.18) 0%,
-    rgba(0, 0, 0, 0.55) 60%
-  );
-}
-
-.Hero__content {
-  width: 100%;
-  max-width: 295px;
-  color: #fff;
-  text-align: left;
-}
-
-.Hero__title {
-  margin: 0 0 12px;
-  font-family: 'Cormorant', serif;
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-
-.Hero__subtitle {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.95);
-  font-family: 'Mulish', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.Hero__actions {
-  width: 100%;
-  margin-top: 32px;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.Button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  border-radius: 12px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  font-weight: 500;
-  transition:
-    background-color 140ms ease,
-    border-color 140ms ease,
-    color 140ms ease,
-    box-shadow 140ms ease;
-}
-
-.Button_primary {
-  width: 100%;
-  max-width: 295px;
-  min-height: 44px;
-  padding: 0 24px;
-  background-color: #fff;
-  color: #111;
-}
-
-.Button_primary:hover,
-.Button_primary:focus {
-  background-color: #fff;
-  border-color: #dcc110;
-  color: #111;
-  outline: none;
-}
-
-.Button_primary:active {
-  background-color: #f3df59;
-  border-color: #dcc110;
-  box-shadow: inset 0 0 0 1px #dcc110;
-}
-
-.Button_primary:disabled,
-.Button_primary[aria-disabled='true'] {
-  background-color: #f6e99b;
-  border-color: transparent;
-  color: #a3a3a3;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.VisuallyHidden {
+.Hero .VisuallyHidden {
   position: absolute !important;
   width: 1px;
   height: 1px;
@@ -286,7 +142,11 @@
   }
 
   .Hero__overlay {
-    padding: 28px 28px 24px;
+    padding: 28px 16px 24px;
+  }
+
+  .Hero__title {
+    font-size: 38px;
   }
 }
 
@@ -296,15 +156,17 @@
 
 @media (min-width: 768px) {
   .Hero {
-    padding: 32px;
+    padding: 32px 0;
   }
 
   .Hero__visual {
     min-height: 431px;
+    background-image: url('/img/hero-tablet.webp');
     background-position: center 34%;
   }
 
   .Hero__overlay {
+    align-items: flex-start;
     padding: 38px 32px 32px;
   }
 
@@ -325,7 +187,7 @@
     width: auto;
   }
 
-  .Button_primary {
+  .Hero .Button_primary {
     width: 159px;
     max-width: none;
     min-height: 44px;
@@ -340,30 +202,29 @@
 
 @media (min-width: 1440px) {
   .Hero {
-    padding: 48px 64px;
+    padding: 48px 0;
   }
 
   .Hero__visual {
     max-width: 1312px;
     height: 702px;
     min-height: unset;
+    background-image: url('/img/hero.webp');
     background-position: center center;
   }
 
   .Hero__overlay {
     display: grid;
-    grid-template-columns: 993px 159px;
-    grid-template-rows: 212px;
+    grid-template-columns: minmax(0, 1fr) 159px;
     align-items: end;
-    justify-content: start;
+    align-content: end;
     column-gap: 32px;
-    padding: 458px 64px 32px;
+    padding: 32px 64px;
   }
 
   .Hero__content {
-    width: 993px;
-    max-width: none;
-    min-height: 212px;
+    width: 100%;
+    max-width: 993px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -372,16 +233,13 @@
   }
 
   .Hero__title {
-    width: 700px;
-    min-height: 134px;
+    max-width: 760px;
     margin: 0;
     font-size: 56px;
   }
 
   .Hero__subtitle {
-    width: 798px;
-    max-width: none;
-    min-height: 54px;
+    max-width: 798px;
     margin: 0;
   }
 
@@ -394,7 +252,7 @@
     justify-content: flex-end;
   }
 
-  .Button_primary {
+  .Hero .Button_primary {
     width: 159px;
     height: 44px;
     min-height: 44px;

@@ -45,6 +45,7 @@
 
   --font-family: 'Mulish', sans-serif;
   --second-family: 'Cormorant', sans-serif;
+  --transition: 250ms ease;
 }
 
 html {
