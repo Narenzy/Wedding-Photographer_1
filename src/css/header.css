@@ -1,0 +1,179 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-header img {
+  height: 46px;
+  width: auto;
+}
+
+.nav-header,
+.btn-book {
+  display: none;
+}
+
+
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: #333;
+  font: 500 16px/1 'Mulish', sans-serif;
+  transition: color .3s;
+}
+
+.nav-list a:hover {
+  color: #DCC110;
+}
+
+
+.btn-book {
+  background: #DCC110;
+  color: #1a1a1a;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-book:hover {
+  transform: translateY(-2px);
+}
+
+
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background: #333;
+}
+
+
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background-color: #fff;
+  z-index: 1100;
+
+  transform: translateX(100%);
+  transition: 0.4s ease;
+
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.mobile-menu:target {
+  transform: translateX(0);
+}
+
+/* header inside menu */
+.mobile-menu__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.mobile-menu__close {
+  font-size: 26px;
+  text-decoration: none;
+  color: #333;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-link {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+}
+
+.btn-book--mobile {
+  margin-top: auto;
+  width: 100%;
+}
+
+
+@media (min-width: 768px) {
+
+  .header-container {
+    height: 85px;
+    padding: 0 32px;
+  }
+
+  .logo-header img {
+    height: 48px;
+  }
+
+  .nav-header {
+    display: block;
+  }
+
+  .btn-book {
+    display: block;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+
+
+@media (min-width: 1440px) {
+
+  .header-container {
+    max-width: 1200px;
+    padding: 0 64px;
+    height: 90px;
+  }
+
+  .logo-header img {
+    height: 52px;
+  }
+
+  .nav-list {
+    gap: 48px;
+  }
+}
