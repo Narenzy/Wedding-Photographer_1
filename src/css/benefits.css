@@ -7,6 +7,19 @@
     padding: 64px 24px;
 }
 
+@media only screen and (min-width: 768px) {
+    .benefits {
+        padding: 64px 32px;
+    }
+}
+
+
+@media only screen and (min-width: 1440px) {
+    .benefits {
+        padding: 92px 64px;
+    }
+}
+
 .benifits-title{
     font-family: "Cormorant", sans-serif;
     font-weight: 500;
@@ -14,8 +27,39 @@
     line-height: 1.2;
     letter-spacing: -0.01em;
     text-align: center;
-    margin-top: 16px;
-    margin-bottom: 40px;
+    padding-top: 16px;
+    padding-bottom: 40px;
+}
+
+@media only screen and (min-width: 1440px) {
+    .benifits-title {
+        font-size: 40px;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .benefits-title-name {
+        height: 105px;
+        width: auto;
+        padding: 0 16px;
+        margin-bottom: 40px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .benefits-title-name {
+        height: 154px;
+    }
+}
+
+.benifits-title br{
+    display: none;
+}
+
+@media only screen and (min-width: 1440px) {
+.benifits-title br {
+        display: inline;
+    }
 }
 
 .benefits-icons {
@@ -24,7 +68,7 @@
     stroke: black;
     fill: transparent;
 }
-.benefits-list {}
+
 
 .benefits-list-elements {
     display: flex;
@@ -36,11 +80,74 @@
     width: 100%;
 }
 
+@media only screen and (min-width: 1440px) {
+    .benefits-list-elements{
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .benefits-list-elements {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: row;
+        gap: 175px;
+    }
+}
+
+.benefits-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
+
+}
+
+
+@media only screen and (min-width: 768px){
+    .benefits-element{
+        flex-direction: column;
+        gap: 24px;
+        width: calc((100% - 24px * 2) / 3);
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .benefits-element {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: calc((100% - 175px * 2) / 3);
+    }
+}
+
 .benefits-name {
     font-weight: 600;
     font-size: 20px;
     line-height: 1.5;
     text-align: center;
+}
+
+
+.desktop-br,
+.tablet-br {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .tablet-br{
+        display: inline;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .desktop-br {
+        display: inline;
+    }
+    .tablet-br {
+        display: none;
+    }
 }
 
 .benefits-info {
