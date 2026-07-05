@@ -1,3 +1,5 @@
+import { createOrder } from './api.js'; 
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contacts-form');
   const phoneInput = document.getElementById('contact-phone');
@@ -16,16 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   phoneInput.addEventListener('input', (e) => {
     const value = e.target.value;
-    const cleanValue = value.replace(/[^0-9+\-]/g, '');
+    const cleanValue = value.replace(/[^0-9]/g, ''); 
     
     if (value !== cleanValue) {
       e.target.value = cleanValue;
-    }
-
-    if (cleanValue.includes('+') || cleanValue.includes('-')) {
-      showError(phoneInput);
-    } else {
-      phoneInput.classList.remove('error');
     }
   });
 
@@ -44,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hasError = true;
     }
 
-    if (phone.length < 12 || phone.includes('+') || phone.includes('-')) {
+    if (phone.length < 9) { 
       showError(phoneInput);
       hasError = true;
     }
@@ -63,11 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.disabled = true;
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500)); 
+      await createOrder({ name, phone, comment: message }); 
+      
       alert('Thank you! Your message has been sent successfully. ✨');
       form.reset();
     } catch (error) {
-      console.error(error);
+      console.error('API Error:', error);
+      alert('Something went wrong. Please try again.');
     } finally {
       submitBtn.textContent = originalBtnText;
       submitBtn.disabled = false;

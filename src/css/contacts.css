@@ -178,20 +178,20 @@
 
 .contacts__form-error {
   display: none;
-  color: #d93838;
+  color: var(--red);
   font-size: 12px;
   margin-top: 2px;
 }
 
 .contacts__form-input.error,
 .contacts__form-textarea.error {
-  border-color: #d93838 !important;
-  color: #d93838;
+  border-color: var(--red) !important;
+  color: var(--red);
 }
 
 .contacts__form-input.error::placeholder,
 .contacts__form-textarea.error::placeholder {
-  color: rgba(219, 56, 56, 0.6);
+  color: rgba(196, 0, 0, 0.6);
 }
 
 .contacts__form-input.error ~ .contacts__form-error,
