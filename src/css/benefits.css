@@ -20,8 +20,8 @@
     }
 }
 
-.benifits-title{
-    font-family: "Cormorant", sans-serif;
+.benefits-title{
+    font-family: var(--second-family);
     font-weight: 500;
     font-size: 28px;
     line-height: 1.2;
@@ -32,7 +32,7 @@
 }
 
 @media only screen and (min-width: 1440px) {
-    .benifits-title {
+    .benefits-title {
         font-size: 40px;
     }
 }
@@ -52,12 +52,12 @@
     }
 }
 
-.benifits-title br{
+.benefits-title br{
     display: none;
 }
 
 @media only screen and (min-width: 1440px) {
-.benifits-title br {
+.benefits-title br {
         display: inline;
     }
 }
@@ -65,7 +65,7 @@
 .benefits-icons {
     display: block;
     margin: 0 auto;
-    fill: black;
+    fill: var(--color-neutral-darkest);
     /* fill: transparent; */
 }
 
