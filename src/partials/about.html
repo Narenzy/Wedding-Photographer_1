@@ -1,15 +1,44 @@
 <section class="about" id="about">
   <div class="container">
-    <h2 class="about-title">
-      Meet Maria Kovalenko: Your Partner in Capturing Unforgettable Wedding
-      Moments
-    </h2>
-    <p class="about-text">
-      With years of experience in wedding photography, Maria specializes in
-      capturing genuine emotions and beautiful moments. Her unique approach
-      blends artistry with a personal touch, ensuring that each couple's story
-      is told through stunning imagery.
-    </p>
-    <img src="#" class="about-image" alt="Bride and groom holding hands" />
+    <div class="about-content">
+      <svg class="about-decoration" width="300" height="21" aria-hidden="true">
+        <use href="/icons/symbol.svg#icon-decoration"></use>
+      </svg>
+      <h2 class="about-title">
+        Meet Maria Kovalenko: Your Partner in Capturing Unforgettable Wedding
+        Moments
+      </h2>
+      <p class="about-text">
+        With years of experience in wedding photography, Maria specializes in
+        capturing genuine emotions and beautiful moments. Her unique approach
+        blends artistry with a personal touch, ensuring that each couple's story
+        is told through stunning imagery.
+      </p>
+    </div>
+    <picture>
+      <!-- Desktop -->
+      <source
+        media="(min-width: 1440px)"
+        srcset="/img/about-desktop-1x.webp 1x, /img/about-desktop-2x.webp 2x"
+        type="image/webp"
+      />
+
+      <!-- Tablet -->
+      <source
+        media="(min-width: 768px)"
+        srcset="/img/about-tablet-1x.webp 1x, /img/about-tablet-2x.webp 2x"
+        type="image/webp"
+      />
+
+      <!-- Mobile (fallback) -->
+      <img
+        src="/img/about-mobile-1x.webp"
+        srcset="/img/about-mobile-1x.webp 1x, /img/about-mobile-2x.webp 2x"
+        alt="Bride and groom holding hands"
+        width="335"
+        height="273"
+        class="about-image"
+      />
+    </picture>
   </div>
 </section>
