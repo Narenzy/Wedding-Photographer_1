@@ -1,6 +1,11 @@
 /* HERO SECTION — mobile first */
 
 .hero {
+  --hero-visual-radius: 28px;
+  --hero-button-radius: 6px;
+  --hero-mobile-action-width: min(295px, 100%);
+  --hero-action-height: 44px;
+
   padding: 32px 0;
   background-color: var(--color-scheme-2-background);
 }
@@ -12,9 +17,13 @@
   min-height: 560px;
   margin: 0;
   overflow: hidden;
-  border-radius: 28px;
+  border-radius: var(--hero-visual-radius);
   background-color: var(--color-neutral-darkest);
-  background-image: url('/img/hero-mobile.webp');
+  background-image: url('/img/hero-mobile-2x.webp');
+  background-image: image-set(
+    url('/img/hero-mobile-1x.webp') 1x,
+    url('/img/hero-mobile-2x.webp') 2x
+  );
   background-repeat: no-repeat;
   background-position: 56% center;
   background-size: cover;
@@ -23,8 +32,7 @@
 .hero__overlay {
   box-sizing: content-box;
   display: flex;
-  width: calc(100% - 40px);
-  max-width: 295px;
+  width: min(295px, calc(100% - 40px));
   min-height: 464px;
   flex-direction: column;
   align-items: stretch;
@@ -52,8 +60,6 @@
 .hero__title {
   width: min(295px, 100%);
   max-width: 100%;
-  height: 192px;
-  overflow-y: auto;
   font-family: var(--second-family);
   font-weight: 500;
   font-size: 40px;
@@ -64,8 +70,6 @@
 .hero__subtitle {
   width: min(295px, 100%);
   max-width: 100%;
-  height: 162px;
-  overflow-y: auto;
   color: rgba(255, 255, 255, 0.95);
   font-weight: 400;
   font-size: 18px;
@@ -74,7 +78,8 @@
 
 .hero__actions {
   align-self: stretch;
-  width: 100%;
+  width: var(--hero-mobile-action-width);
+  height: var(--hero-action-height);
   margin-top: auto;
   display: flex;
   justify-content: flex-start;
@@ -84,7 +89,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  box-sizing: border-box;
+  border-radius: var(--hero-button-radius);
   border: 2px solid transparent;
   font-weight: 500;
   transition:
@@ -96,9 +102,9 @@
 
 .hero .button_primary {
   width: 100%;
-  max-width: none;
-  min-height: 44px;
-  padding: 0 24px;
+  height: 100%;
+  min-height: 100%;
+  padding: 0;
   background-color: #f0d33a;
   color: var(--color-neutral-darkest);
 }
@@ -137,26 +143,16 @@
   border: 0;
 }
 
-/* MOBILE ADAPTIVE: min-width 375px */
-
-@media (min-width: 375px) {
-  .hero__visual {
-    min-height: 590px;
-  }
-
-  .hero__overlay {
-    width: 295px;
-    min-height: 464px;
-  }
-
-}
-
 /* TABLET: min-width 768px */
 
 @media (min-width: 768px) {
   .hero__visual {
     min-height: 431px;
-    background-image: url('/img/hero-tablet.webp');
+    background-image: url('/img/hero-tablet-2x.webp');
+    background-image: image-set(
+      url('/img/hero-tablet-1x.webp') 1x,
+      url('/img/hero-tablet-2x.webp') 2x
+    );
     background-position: center 34%;
   }
 
@@ -178,8 +174,6 @@
   .hero__title {
     width: min(519px, 100%);
     max-width: 519px;
-    height: 96px;
-    overflow-y: auto;
     font-size: 40px;
     line-height: 1.2;
   }
@@ -187,22 +181,27 @@
   .hero__subtitle {
     width: min(640px, 100%);
     max-width: 640px;
-    height: 81px;
-    overflow-y: auto;
     font-size: 18px;
     line-height: 1.5;
   }
 
   .hero__actions {
-    width: auto;
+    width: 159px;
+    height: var(--hero-action-height);
     margin-top: 0;
   }
 
   .hero .button_primary {
-    width: 159px;
-    max-width: none;
-    min-height: 44px;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
     padding: 0;
+    background-color: var(--color-curious-blue);
+    border-color: var(--color-curious-blue);
+  }
+
+  .hero .button {
+    border-width: 1px;
   }
 }
 
@@ -217,7 +216,11 @@
     max-width: 1312px;
     height: 702px;
     min-height: unset;
-    background-image: url('/img/hero.webp');
+    background-image: url('/img/hero-desktop-2x.webp');
+    background-image: image-set(
+      url('/img/hero-desktop-1x.webp') 1x,
+      url('/img/hero-desktop-2x.webp') 2x
+    );
     background-position: center center;
   }
 
@@ -263,7 +266,7 @@
 
   .hero__actions {
     width: 159px;
-    height: 44px;
+    height: var(--hero-action-height);
     margin-top: 0;
     align-self: end;
     justify-self: end;
@@ -271,8 +274,9 @@
   }
 
   .hero .button_primary {
-    width: 159px;
-    height: 44px;
-    min-height: 44px;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    padding: 0;
   }
 }
