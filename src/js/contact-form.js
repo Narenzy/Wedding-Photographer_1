@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.disabled = true;
 
     try {
-      await createOrder({ name, phone, comment: message });
+      await createOrder({ name, phone, message: message });
 
       alert('Thank you! Your message has been sent successfully. ✨');
       form.reset();
