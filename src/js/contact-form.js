@@ -10,8 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const nameInput = document.getElementById('contact-name');
   const messageInput = document.getElementById('contact-message');
 
-  const showError = input => {
+  const showError = (input, message) => {
     input.classList.add('error');
+    const errorSpan = input.parentElement.querySelector('.contacts__form-error');
+    if (errorSpan) {
+      errorSpan.textContent = message;
+    }
   };
 
   const clearErrors = () => {
@@ -19,6 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
       input.classList.remove('error');
     });
   };
+
+  [nameInput, phoneInput, messageInput].forEach(input => {
+    input.addEventListener('input', () => {
+      input.classList.remove('error');
+    });
+  });
 
   phoneInput.addEventListener('input', e => {
     const value = e.target.value;
@@ -40,17 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let hasError = false;
 
     if (name.length < 2) {
-      showError(nameInput);
+      showError(nameInput, 'Name must be at least 2 characters long.');
       hasError = true;
     }
 
-    if (phone.length < 9) {
-      showError(phoneInput);
+    if (phone.length !== 12) {
+      showError(phoneInput, 'Phone number must contain exactly 12 digits (including country code).');
       hasError = true;
     }
 
-    if (message.length < 10) {
-      showError(messageInput);
+    if (message.length > 0 && message.length < 5) {
+      showError(messageInput, 'Message is optional, but must be at least 5 characters long.');
       hasError = true;
     }
 
@@ -62,8 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
 
+    const requestData = {
+      name: name,
+      phone: phone
+    };
+
     try {
-      await createOrder({ name, phone, message: message });
+      await createOrder(requestData);
 
       iziToast.success({
         title: 'Success',
@@ -73,7 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
       openModal();
       form.reset();
     } catch (error) {
-      console.error('API Error:', error);
+      if (error.response && error.response.data) {
+        console.error('DETAILED SERVER ERROR:', error.response.data);
+      } else {
+        console.error('API Error:', error);
+      }
+      
       iziToast.error({
         title: 'Error',
         message: 'Something went wrong. Please try again.',
