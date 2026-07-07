@@ -1,6 +1,9 @@
 import { createOrder } from './api.js';
 import { openModal } from './modal.js';
 
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contacts-form');
   const phoneInput = document.getElementById('contact-phone');
@@ -62,11 +65,19 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       await createOrder({ name, phone, message: message });
 
+      iziToast.success({
+        title: 'Success',
+        message: 'Your message has been sent successfully!',
+      });
+
       openModal();
       form.reset();
     } catch (error) {
       console.error('API Error:', error);
-      alert('Something went wrong. Please try again.');
+      iziToast.error({
+        title: 'Error',
+        message: 'Something went wrong. Please try again.',
+      });
     } finally {
       submitBtn.textContent = originalBtnText;
       submitBtn.disabled = false;
