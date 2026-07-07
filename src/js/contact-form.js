@@ -1,4 +1,5 @@
 import { createOrder } from './api.js';
+import { openModal } from './modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contacts-form');
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       await createOrder({ name, phone, message: message });
 
-      alert('Thank you! Your message has been sent successfully. ✨');
+      openModal();
       form.reset();
     } catch (error) {
       console.error('API Error:', error);
