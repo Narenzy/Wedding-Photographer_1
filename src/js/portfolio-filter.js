@@ -1,33 +1,31 @@
-const photoport = document.querySelector("#photoport");
-const categories = document.querySelector("#categories");
-const loader = document.querySelector("#loader");
-const buttonport = document.querySelector("#buttonport");
+import { getCategories, getWeddingPhotos } from './api.js';
+import { showLoader, hideLoader } from './loader.js';
 
-const BASE_URL = "https://wedding-photographer.b.goit.study/api";
-const INITIAL_LIMIT = 9; 
-const STEP_LIMIT = 3; 
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
+const photoport = document.querySelector('#photoport');
+const categories = document.querySelector('#categories');
+const buttonport = document.querySelector('#buttonport');
 
-let currentCategoryId = ""; 
+const INITIAL_LIMIT = 9;
+const STEP_LIMIT = 3;
+
+let currentCategoryId = '';
 let currentPage = 1;
 let currentLimit = INITIAL_LIMIT;
-let loadedItems = 0; 
-let totalItems = 0;  
+let loadedItems = 0;
+let totalItems = 0;
 
-                  
-async function getCategories() {
+async function loadCategories() {
   try {
-    const response = await fetch(`${BASE_URL}/categories`);
-
-    if (!response.ok) {
-      throw new Error("Не вдалося завантажити категорії");
-    }
-
-    const data = await response.json();
-
+    const data = await getCategories();
     renderCategories(data);
   } catch (error) {
-    console.log(error);
+    iziToast.error({
+      message: 'Failed to load data',
+      position: 'topRight',
+    });
   }
 }
 
@@ -40,7 +38,7 @@ function renderCategories(categoriesList) {
     </li>`;
 
   const markup = categoriesList
-    .map((item) => {
+    .map(item => {
       return `
         <li class="categories-item">
           <button class="categories-btn"
@@ -51,31 +49,30 @@ function renderCategories(categoriesList) {
         </li>
       `;
     })
-    .join("");
+    .join('');
 
   categories.innerHTML = allPhotosBtn + markup;
 }
 
-categories.addEventListener("click", onCategoryClick);
+categories.addEventListener('click', onCategoryClick);
 
 function onCategoryClick(event) {
-  if (event.target.nodeName !== "BUTTON") {
-    return; 
+  if (event.target.nodeName !== 'BUTTON') {
+    return;
   }
 
   const btn = event.target;
 
-  if (btn.classList.contains("active")) {
-    return; 
+  if (btn.classList.contains('active')) {
+    return;
   }
 
-  const prevActiveBtn = categories.querySelector(".categories-btn.active");
+  const prevActiveBtn = categories.querySelector('.categories-btn.active');
   if (prevActiveBtn) {
-    prevActiveBtn.classList.remove("active");
+    prevActiveBtn.classList.remove('active');
   }
-  btn.classList.add("active");
+  btn.classList.add('active');
 
- 
   currentCategoryId = btn.dataset.id;
   currentPage = 1;
   currentLimit = INITIAL_LIMIT;
@@ -83,32 +80,22 @@ function onCategoryClick(event) {
 
   getFoto(true);
 }
-
-                
 async function getFoto(isNewSearch) {
   showLoader();
   buttonport.disabled = true;
 
-  let url =
-    BASE_URL +
-    "/wedding-photos?page=" +
-    currentPage +
-    "&limit=" +
-    currentLimit +
-    "&sortName=title";
+  const params = {
+    page: currentPage,
+    limit: currentLimit,
+    sortName: 'title',
+  };
 
   if (currentCategoryId) {
-    url += "&categoryId=" + currentCategoryId;
+    params.categoryId = currentCategoryId;
   }
 
   try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error("Error");
-    }
-
-    const data = await response.json();
+    const data = await getWeddingPhotos(params);
 
     totalItems = data.totalItems;
     loadedItems += data.weddingPhotos.length;
@@ -116,15 +103,18 @@ async function getFoto(isNewSearch) {
     renderFotos(data.weddingPhotos, isNewSearch);
     updateShowMoreBtn();
   } catch (error) {
-    console.log(error);
+    iziToast.error({
+      message: 'Failed to load photos',
+      position: 'topRight',
+    });
   } finally {
-    hideLoader(); 
+    hideLoader();
   }
 }
 
 function renderFotos(fotosList, isNewSearch) {
   const markup = fotosList
-    .map((item) => {
+    .map(item => {
       return `<li class="photoport-item">
         <img  class="photoport-img"
               src="${item.img}"
@@ -132,17 +122,16 @@ function renderFotos(fotosList, isNewSearch) {
               loading="lazy">
            </li>`;
     })
-    .join("");
+    .join('');
 
   if (isNewSearch) {
-    photoport.innerHTML = markup; 
+    photoport.innerHTML = markup;
   } else {
-    photoport.innerHTML = photoport.innerHTML + markup; 
+    photoport.innerHTML = photoport.innerHTML + markup;
   }
 }
 
-                 
-buttonport.addEventListener("click", function () {
+buttonport.addEventListener('click', function () {
   currentLimit = STEP_LIMIT;
   currentPage = Math.floor(loadedItems / STEP_LIMIT) + 1;
   getFoto(false);
@@ -152,22 +141,13 @@ function updateShowMoreBtn() {
   const hasMorePhotos = loadedItems < totalItems;
 
   if (hasMorePhotos) {
-    buttonport.classList.remove("hidden");
+    buttonport.classList.remove('hidden');
     buttonport.disabled = false;
   } else {
-    buttonport.classList.add("hidden");
+    buttonport.classList.add('hidden');
     buttonport.disabled = true;
   }
 }
 
-                 
-function showLoader() {
-  loader.classList.remove("hidden");
-}
-
-function hideLoader() {
-  loader.classList.add("hidden");
-}
-
-getCategories();
+loadCategories();
 getFoto(true);
