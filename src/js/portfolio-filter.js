@@ -169,6 +169,5 @@ function hideLoader() {
   loader.classList.add("hidden");
 }
 
-// START
 getCategories();
 getFoto(true);

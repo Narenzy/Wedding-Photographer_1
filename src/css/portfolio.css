@@ -1,12 +1,7 @@
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family);
     color: #1f1f1f;
     background-color: #fbfaf4;
 }
@@ -32,21 +27,12 @@ button {
 
 .goncha {
     margin: 0 0 32px;
-    font-family: Georgia, serif;
+    font-family: var(--second-family);
     font-size: 32px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.2;
+    letter-spacing: -0.01em;
     text-align: center;
-}
-
-.goncha::before {
-    content: "";
-    display: block;
-    width: 120px;
-    height: 12px;
-    margin: 0 auto 16px;
-    border-top: 2px solid #4b4b4b;
-    border-bottom: 2px solid #4b4b4b;
 }
 
 .categories {
@@ -62,7 +48,8 @@ button {
 .categories-btn {
     min-height: 34px;
     padding: 8px 14px;
-    border: 1px solid #222222;
+    font-family: var(--font-family);
+    border: 1px solid transparent;
     border-radius: 4px;
     color: #222222;
     background-color: transparent;
@@ -74,9 +61,8 @@ button {
 }
 
 .categories-btn:hover,
-.categories-btn:focus {
-    color: #ffffff;
-    background-color: #222222;
+.categories-btn:focus,
+.categories-btn.active {
     border-color: #222222;
 }
 
@@ -119,23 +105,25 @@ button {
 }
 
 .buttonport {
-    min-width: 180px;
+    width: 100%;
     min-height: 44px;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
+    padding: 10px 24px;
+    border: 1px solid #DCC110;
+    border-radius: 6px;
     color: #222222;
-    background-color: #f3d20b;
-    font-size: 14px;
+    background-color: #DCC110;
+    font-family: var(--font-family);
+    font-size: 16px;
     font-weight: 600;
     line-height: 1.2;
     cursor: pointer;
-    transition: background-color 250ms ease, transform 250ms ease;
+    transition: background-color 250ms ease, border-color 250ms ease, transform 250ms ease;
 }
 
 .buttonport:hover,
 .buttonport:focus {
-    background-color: #d9bb00;
+    border-color: #c4a90e;
+    background-color: #c4a90e;
     transform: translateY(-1px);
 }
 
@@ -168,6 +156,18 @@ button {
 
     .photoport {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .buttonport {
+        width: 310px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .photoport-item:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        width: calc(50% - 12px);
+        justify-self: center;
     }
 }
 
