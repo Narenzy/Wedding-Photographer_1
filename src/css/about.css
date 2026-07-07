@@ -38,6 +38,10 @@
   }
 }
 @media (min-width: 1440px) {
+  .about {
+    padding: 92px 0;
+    text-align: center;
+  }
   .about-image {
     width: 1312px;
   }
