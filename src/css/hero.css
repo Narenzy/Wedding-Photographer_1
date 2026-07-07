@@ -6,15 +6,21 @@
   --hero-mobile-action-width: min(295px, 100%);
   --hero-action-height: 44px;
 
-  padding: 32px 0;
+  padding: 32px 20px;
   background-color: var(--color-scheme-2-background);
+}
+
+.hero__container {
+  width: 100%;
+  max-width: 335px;
+  padding: 0;
 }
 
 .hero__visual {
   position: relative;
   display: flex;
   width: 100%;
-  min-height: 560px;
+  min-height: 528px;
   margin: 0;
   overflow: hidden;
   border-radius: var(--hero-visual-radius);
@@ -146,6 +152,15 @@
 /* TABLET: min-width 768px */
 
 @media (min-width: 768px) {
+  .hero {
+    padding: 0;
+  }
+
+  .hero__container {
+    max-width: 768px;
+    padding: 32px;
+  }
+
   .hero__visual {
     min-height: 431px;
     background-image: url('/img/hero-tablet-2x.webp');
@@ -159,16 +174,17 @@
   .hero__overlay {
     box-sizing: border-box;
     width: 100%;
-    max-width: none;
     align-items: flex-start;
-    min-height: inherit;
+    min-height: 100%;
     justify-content: flex-end;
     gap: 32px;
-    padding: 38px 32px 32px;
+    padding: 122px 32px 32px;
   }
 
   .hero__content {
+    width: 100%;
     max-width: 640px;
+    min-height: 201px;
   }
 
   .hero__title {
@@ -210,6 +226,11 @@
 @media (min-width: 1440px) {
   .hero {
     padding: 48px 0;
+  }
+
+  .hero__container {
+    max-width: 1440px;
+    padding: 0 64px;
   }
 
   .hero__visual {
