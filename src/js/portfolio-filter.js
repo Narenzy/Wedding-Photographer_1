@@ -1,5 +1,7 @@
 import { getCategories, getWeddingPhotos } from './api.js';
 import { showLoader, hideLoader } from './loader.js';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -16,6 +18,11 @@ let currentPage = 1;
 let currentLimit = INITIAL_LIMIT;
 let loadedItems = 0;
 let totalItems = 0;
+
+const lightbox = new SimpleLightbox('.photoport a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 async function loadCategories() {
   try {
@@ -116,11 +123,13 @@ function renderFotos(fotosList, isNewSearch) {
   const markup = fotosList
     .map(item => {
       return `<li class="photoport-item">
-        <img  class="photoport-img"
-              src="${item.img}"
-              alt="${item.title}"
-              loading="lazy">
-           </li>`;
+                <a class="photoport-link" href="${item.img}">
+                  <img class="photoport-img"
+                  src="${item.img}"
+                  alt="${item.title}"
+                  loading="lazy">
+                </a>
+              </li>`;
     })
     .join('');
 
@@ -129,6 +138,7 @@ function renderFotos(fotosList, isNewSearch) {
   } else {
     photoport.innerHTML = photoport.innerHTML + markup;
   }
+  lightbox.refresh();
 }
 
 buttonport.addEventListener('click', function () {
