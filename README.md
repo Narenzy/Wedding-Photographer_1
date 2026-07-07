@@ -1,113 +1,117 @@
-# Vanilla App Template
+# Wedding Photographer — Landing Page
 
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+A single-page responsive website for wedding photographer Maria Kovalenko. Built
+as a team training project (MVP) by a team of 10 developers.
 
-## Створення репозиторію за шаблоном
+## About the project
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проекту. Для цього натисни на кнопку `«Use this template»` і
-обери опцію `«Create a new repository»`, як показано на зображенні.
+The site consists of 10 sections — Header, Hero, About, Benefits, Feedbacks,
+Portfolio, FAQ, Contacts, Footer, Success Modal — and solves the task of
+presenting photography services, a portfolio, and collecting inquiries from
+potential clients through a contact form.
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+The layout follows a **Mobile First** approach, with the following breakpoints:
 
-На наступному етапі відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся, що репозиторій публічний, після чого натисни
-кнопку `«Create repository from template»`.
+- **mobile** — fluid from 320px, becomes adaptive at 375px
+- **tablet** — from 768px
+- **desktop** — from 1440px
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+## Tech stack
 
-Після того, як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+| Technology                | Purpose                                                                                             |
+| ------------------------- | --------------------------------------------------------------------------------------------------- |
+| **Vite**                  | project build tool, dev server                                                                      |
+| `vite-plugin-html-inject` | includes HTML partials (`<load src="...">`) — each section lives in its own file                    |
+| **modern-normalize**      | resets default browser styles                                                                       |
+| **Prettier**              | code formatting                                                                                     |
+| **Swiper.js**             | horizontal feedback slider (Feedbacks section) with mouse, keyboard (Tab/arrows), and touch support |
+| **Axios**                 | HTTP requests to the backend                                                                        |
+| **IcoMoon**               | generates the SVG icon sprite (`icons/sprite.svg`), used via `<use href="...">`                     |
+| Google Fonts (`<link>`)   | fonts connected directly in `<head>`                                                                |
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+## API
 
-Проскроливши сторінку до самого кінця, в секції `«Workflow permissions»` обери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проекту.
+Documentation: https://wedding-photographer.b.goit.study/api-docs/
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+| Endpoint              | Used for                                   |
+| --------------------- | ------------------------------------------ |
+| `GET /feedbacks`      | client reviews for the Feedbacks section   |
+| `GET /categories`     | filter categories for the Portfolio        |
+| `GET /wedding-photos` | portfolio photos with pagination           |
+| `POST /orders`        | contact form submission (Contacts section) |
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів та папок
-репозиторію-шаблону. Далі працюй з ним, як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби коміти та відправляй
-їх на GitHub.
+## Project structure
 
-## Підготовка до роботи
-
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проекту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши в терміналі команду `npm run dev`.
-4. Перейдіть у браузері за адресою
-   [http://localhost:5173](http://localhost:5173). Ця сторінка буде автоматично
-   перезавантажуватись після збереження змін у файли проекту.
-
-## Файли і папки
-
-- Файли розмітки компонентів сторінки повинні лежати в папці `src/partials` та
-  імпортуватись до файлу `index.html`. Наприклад, файл з розміткою хедера
-  `header.html` створюємо у папці `partials` та імпортуємо в `index.html`.
-- Файли стилів повинні лежати в папці `src/css` та імпортуватись до HTML-файлів
-  сторінок. Наприклад, для `index.html` файл стилів називається `index.css`.
-- Зображення додавай до папки `src/img`. Збирач оптимізує їх, але тільки при
-  деплої продакшн версії проекту. Все це відбувається у хмарі, щоб не
-  навантажувати твій комп'ютер, тому що на слабких компʼютерах це може зайняти
-  багато часу.
-
-## Деплой
-
-Продакшн версія проекту буде автоматично збиратися та деплоїтись на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пуша або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` змінити значення прапора `--base=/<REPO>/`, для команди `build`,
-замінивши `<REPO>` на назву свого репозиторію, та відправити зміни на GitHub.
-
-```json
-"build": "vite build --base=/<REPO>/",
+```
+wedding-photographer/
+├── index.html          # main file, includes all partials via <load>
+├── main.js
+├── vite.config.js
+├── favicon.svg
+├── css/
+│   ├── main.css         # imports all styles
+│   ├── reset.css        # resets default browser styles
+│   ├── base.css         # CSS variables (colors, fonts), base body styles
+│   └── sections/        # one stylesheet per section
+├── js/                  # one script per section
+├── icons/
+│   └── sprite.svg        # SVG icon sprite (IcoMoon)
+├── images/               # images grouped by section
+└── partials/             # HTML markup for each section, one file each
 ```
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+## CSS variables (design tokens)
 
-![GitHub Pages settings](./assets/repo-settings.png)
+Defined in `css/base.css`:
 
-### Статус деплою
+```
+--color-scheme-1-text / --color-scheme-2-text        text color
+--color-scheme-1-background / -2-background          background color
+--color-scheme-1-foreground / -2-foreground           card/accent block background
+--color-scheme-1-border / -2-border                    borders
+--color-scheme-1-accent / -2-accent                     accent color
+--font-family                                            main font (Mulish)
+--second-family                                          heading font (Cormorant)
+```
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+## Team & section ownership
 
-- **Жовтий колір** - виконується збірка та деплой проекту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, збірки чи деплою сталася помилка.
+| Section            | Developer                   |
+| ------------------ | --------------------------- |
+| Header             | Taras Zabudsky              |
+| Hero               | Arsenii Kruk                |
+| About              | Taras Makhanko (Team Lead)  |
+| Benefits           | Andrii Vasylchenko          |
+| Feedbacks          | Kozka Maksym (Scrum Master) |
+| Portfolio          | Ivan Korolyov               |
+| FAQ                | Mariia Chekachkova          |
+| Contacts           | Natalia Fliut               |
+| Footer / scroll up | Julia Demura                |
+| Success Modal      | Khrystyna Konepud           |
 
-Більш детальну інформацію про статус можна переглянути натиснувши на іконку, і в
-вікні, що випадає, перейти за посиланням `Details`.
+## Getting started
 
-![Deployment status](./assets/deploy-status.png)
+```bash
+git clone git@github.com:Narenzy/Wedding-Photographer_1.git
+cd Wedding-Photographer_1
+npm install
+npm run dev
+```
 
-### Жива сторінка
+Production build:
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною на вкладці `Settings` > `Pages` в налаштуваннях репозиторію.
-Наприклад, ось посилання на живу версію для цього репозиторію
+```bash
+npm run build
+```
 
-[https://goitacademy.github.io/vanilla-app-template/](https://goitacademy.github.io/vanilla-app-template/).
+## Team guidelines
 
-Якщо відкриється порожня сторінка, переконайся, що у вкладці `Console` немає
-помилок пов'язаних з неправильними шляхами до CSS та JS файлів проекту
-(**404**). Швидше за все у тебе неправильне значення прапора `--base` для
-команди `build` у файлі `package.json`.
-
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пуша у гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) із файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується та
-   проходить лінтинг та збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн версія файлів проекту
-   відправляється у гілку `gh-pages`. В іншому випадку, у лозі виконання скрипта
-   буде вказано в чому проблема.
+- Each section has its own partial (`partials/section.html`), its own CSS
+  (`css/sections/section.css`), and, if needed, its own JS (`js/section.js`) —
+  to avoid Git conflicts.
+- CSS classes inside a section are prefixed with the section name (e.g.
+  `.feedbacks-title`, `.contacts-btn`), except shared classes (`.container`,
+  `.icon`).
+- Before committing, check the layout at all three breakpoints and validate it
+  with the [W3C Validator](https://validator.w3.org/) and
+  [CSS Validator](https://jigsaw.w3.org/css-validator/).
