@@ -1,4 +1,4 @@
-import { createOrder } from './api.js'; 
+import { createOrder } from './api.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contacts-form');
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nameInput = document.getElementById('contact-name');
   const messageInput = document.getElementById('contact-message');
 
-  const showError = (input) => {
+  const showError = input => {
     input.classList.add('error');
   };
 
@@ -16,23 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  phoneInput.addEventListener('input', (e) => {
+  phoneInput.addEventListener('input', e => {
     const value = e.target.value;
-    const cleanValue = value.replace(/[^0-9]/g, ''); 
-    
+    const cleanValue = value.replace(/[^0-9]/g, '');
+
     if (value !== cleanValue) {
       e.target.value = cleanValue;
     }
   });
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     clearErrors();
 
     const name = nameInput.value.trim();
     const phone = phoneInput.value.trim();
     const message = messageInput.value.trim();
-    
+
     let hasError = false;
 
     if (name.length < 2) {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hasError = true;
     }
 
-    if (phone.length < 9) { 
+    if (phone.length < 9) {
       showError(phoneInput);
       hasError = true;
     }
@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.disabled = true;
 
     try {
-      await createOrder({ name, phone, comment: message }); 
-      
+      await createOrder({ name, phone, message: message });
+
       alert('Thank you! Your message has been sent successfully. ✨');
       form.reset();
     } catch (error) {
