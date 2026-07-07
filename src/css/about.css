@@ -8,15 +8,13 @@
   align-items: center;
 }
 .about-content {
-  display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 40px;
 }
 
 .about-decoration {
   display: block;
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
 }
 .about-title {
   margin-bottom: 24px;
