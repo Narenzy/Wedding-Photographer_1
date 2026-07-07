@@ -3,7 +3,6 @@
   top: 0;
   z-index: 1000;
   background-color: var(--color-scheme-2-background);
-  /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); */
 }
 
 .header-container {
@@ -102,15 +101,10 @@
   align-items: center;
 }
 
-/* .mobile-menu:target {
-  transform: translateX(0);
-} */
-
 .mobile-menu.is-open {
   transform: translateX(0);
 }
 
-/* в теорії має прибрати скрол в меню */
 .no-scroll {
   overflow: hidden;
 }
@@ -170,7 +164,6 @@
 
 .mobile-btn {
   width: 100%;
-  /* max-width: 320px; */
   margin: 0 auto;
   align-self: center;
   display: block;
