@@ -49,8 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let hasError = false;
 
+    const nameRegex = /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s]+$/;
+
     if (name.length < 2) {
       showError(nameInput, 'Name must be at least 2 characters long.');
+      hasError = true;
+    } else if (!nameRegex.test(name)) {
+      showError(nameInput, 'Name must contain letters only.');
       hasError = true;
     }
 
