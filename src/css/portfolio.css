@@ -21,7 +21,7 @@ button {
 .portfolio {
   max-width: 375px;
   margin: 0 auto;
-  padding: 64px 20px;
+  padding: 64px 0;
 }
 
 .goncha {
@@ -131,7 +131,7 @@ button {
 @media screen and (min-width: 768px) {
   .portfolio {
     max-width: 768px;
-    padding: 80px 32px;
+    padding: 64px 0;
   }
 
   .goncha {
@@ -169,7 +169,7 @@ button {
 @media screen and (min-width: 1440px) {
   .portfolio {
     max-width: 1440px;
-    padding: 100px 64px;
+    padding: 92px 0;
   }
 
   .goncha {
