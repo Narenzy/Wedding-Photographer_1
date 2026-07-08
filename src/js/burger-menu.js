@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  function openMenu() {
+  function openMenu() { 
     mobileMenu.classList.add('is-open');
     body.classList.add('no-scroll');
     hamburger.setAttribute('aria-expanded', 'true');

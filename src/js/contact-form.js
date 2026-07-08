@@ -1,4 +1,8 @@
 import { createOrder } from './api.js';
+import { openModal } from './modal.js';
+
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contacts-form');
@@ -6,8 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const nameInput = document.getElementById('contact-name');
   const messageInput = document.getElementById('contact-message');
 
-  const showError = input => {
+  const showError = (input, message) => {
     input.classList.add('error');
+    const errorSpan = input.parentElement.querySelector('.contacts__form-error');
+    if (errorSpan) {
+      errorSpan.textContent = message;
+    }
   };
 
   const clearErrors = () => {
@@ -15,6 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
       input.classList.remove('error');
     });
   };
+
+  [nameInput, phoneInput, messageInput].forEach(input => {
+    input.addEventListener('input', () => {
+      input.classList.remove('error');
+    });
+  });
 
   phoneInput.addEventListener('input', e => {
     const value = e.target.value;
@@ -35,18 +49,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let hasError = false;
 
+    const nameRegex = /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s]+$/;
+
     if (name.length < 2) {
-      showError(nameInput);
+      showError(nameInput, 'Name must be at least 2 characters long.');
+      hasError = true;
+    } else if (!nameRegex.test(name)) {
+      showError(nameInput, 'Name must contain letters only.');
       hasError = true;
     }
 
-    if (phone.length < 9) {
-      showError(phoneInput);
+    if (phone.length !== 12) {
+      showError(phoneInput, 'Phone number must contain exactly 12 digits (including country code).');
       hasError = true;
     }
 
-    if (message.length < 10) {
-      showError(messageInput);
+    if (message.length > 0 && message.length < 5) {
+      showError(messageInput, 'Message is optional, but must be at least 5 characters long.');
       hasError = true;
     }
 
@@ -58,14 +77,32 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
 
-    try {
-      await createOrder({ name, phone, message: message });
+    const requestData = {
+      name: name,
+      phone: phone
+    };
 
-      alert('Thank you! Your message has been sent successfully. ✨');
+    try {
+      await createOrder(requestData);
+
+      iziToast.success({
+        title: 'Success',
+        message: 'Your message has been sent successfully!',
+      });
+
+      openModal();
       form.reset();
     } catch (error) {
-      console.error('API Error:', error);
-      alert('Something went wrong. Please try again.');
+      if (error.response && error.response.data) {
+        console.error('DETAILED SERVER ERROR:', error.response.data);
+      } else {
+        console.error('API Error:', error);
+      }
+      
+      iziToast.error({
+        title: 'Error',
+        message: 'Something went wrong. Please try again.',
+      });
     } finally {
       submitBtn.textContent = originalBtnText;
       submitBtn.disabled = false;

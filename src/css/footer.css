@@ -35,7 +35,7 @@
   color: var(--color-scheme-2-text);
 }
 
-.nav-list {
+.footer-nav-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,7 +107,7 @@
   .footer-list-title {
     text-align: left;
   }
-  .nav-list {
+  .footer-nav-list {
     align-items: flex-start;
     margin-left: -6px;
   }
