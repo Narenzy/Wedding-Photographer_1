@@ -76,18 +76,18 @@ Defined in `css/base.css`:
 
 ## Team & section ownership
 
-| Section            | Developer                   |
-| ------------------ | --------------------------- |
-| Header             | Taras Zabudsky              |
-| Hero               | Arsenii Kruk                |
-| About              | Taras Makhanko (Team Lead)  |
-| Benefits           | Andrii Vasylchenko          |
-| Feedbacks          | Kozka Maksym (Scrum Master) |
-| Portfolio          | Ivan Korolyov               |
-| FAQ                | Mariia Chekachkova          |
-| Contacts           | Natalia Fliut               |
-| Footer / scroll up | Julia Demura                |
-| Success Modal      | Khrystyna Konepud           |
+| Section            | Developer                                                     |
+| ------------------ | ------------------------------------------------------------- |
+| Header             | [Taras Zabudsky](https://github.com/taraszabudsky)            |
+| Hero               | [Arsenii Kruk](https://github.com/Arsenii-21)                 |
+| About              | [Taras Makhanko](https://github.com/Narenzy) _(Team Lead)_    |
+| Benefits           | [Andrii Vasylchenko](https://github.com/kidstonek)            |
+| Feedbacks          | [Kozka Maksym](https://github.com/muffin127) _(Scrum Master)_ |
+| Portfolio          | [Ivan Korolyov](https://github.com/Ivan-pes)                  |
+| FAQ                | [Mariia Chekachkova](https://github.com/MariiaChekachkova)    |
+| Contacts           | [Natalia Fliut](https://github.com/nataliafliut-cyber)        |
+| Footer / Scroll Up | [Julia Demura](https://github.com/julia-demura)               |
+| Success Modal      | [Khrystyna Konepud](https://github.com/KKonepud)              |
 
 ## Getting started
 
