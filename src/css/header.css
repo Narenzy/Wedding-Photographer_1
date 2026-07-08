@@ -54,10 +54,22 @@
   padding: 12px 26px;
   border-radius: 8px;
   cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.btn-book:hover,
+.btn-book:focus {
+  border-color: #c4a90e;
+  background-color: #c4a90e;
+  color: var(--color-neutral-darkest);
+  outline: none;
 }
 
 .btn-book:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .hamburger {
@@ -118,7 +130,7 @@
   background: none;
   border: none;
   font-size: 24px;
-  color: #000;
+  color: black;
   cursor: pointer;
   padding: 0;
   line-height: 1;
@@ -181,8 +193,8 @@
   }
 
   .nav-header {
-    display: block;
-    border-radius: 6px;
+    display: flex;
+    gap: 32px;
   }
 
   .btn-book {
@@ -201,6 +213,9 @@
     padding: 0;
     padding: 8px 32px 8px 52px;
   }
+  .mobile-menu {
+    display: none;
+  }
 }
 
 @media (min-width: 1440px) {
@@ -214,13 +229,17 @@
     margin: 0 auto;
   }
 
+  .nav-header {
+    display: flex;
+    gap: 32px;
+  }
+
   .logo-header img {
     height: 52px;
   }
 
   .nav-list {
     gap: 32px;
-    padding: 8px 32px 8px 660px;
   }
 
   .btn-book {
@@ -229,5 +248,8 @@
     font-weight: 500;
     font-size: 14px;
     border-radius: 6px;
+  }
+  .mobile-menu {
+    display: none;
   }
 }
