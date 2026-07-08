@@ -175,13 +175,20 @@
   transition:
     background-color var(--transition),
     border-color var(--transition),
+    color var(--transition),
     transform var(--transition);
 }
 
 .contacts__form-btn:hover,
 .contacts__form-btn:focus {
-  background-color: var(--color-white);
-  border-color: var(--color-curious-blue);
+  background-color: #c4a90e;
+  border-color: #c4a90e;
+  color: var(--color-neutral-darkest);
+  outline: none;
+}
+
+.contacts__form-btn:hover {
+  transform: translateY(-1px);
 }
 
 .contacts__form-btn:active {
